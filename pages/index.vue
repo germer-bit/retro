@@ -69,7 +69,7 @@
       <v-card
       elevation="13"outlined
         class="pa-6 ma-2">
-                <v-card-title>Filter</v-card-title>
+                <v-card-title>slice</v-card-title>
 
         <h4>Primeros 2 productos:</h4>
         <ul>
