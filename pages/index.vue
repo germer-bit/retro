@@ -11,7 +11,7 @@
       <v-card
       elevation="13"outlined
       class="pa-6 ma-2">
-      <v-card-titled>LocalStorage</v-card-titled>
+      <v-card-title>LocalStorage</v-card-title>
       <p>Guardar una variable y volverla a recuperar</p>
         <!-- Formulario para ingresar el nombre -->
         <v-text-field
@@ -99,9 +99,9 @@ export default {
         { nombre: "Celular", precio: 800, categoria: "Tecnología" },
         { nombre: "Monitor", precio: 300, categoria: "Tecnología" },
         { nombre: "Silla", precio: 100, categoria: "Muebles" },
-        { nombre: "Mesa", precio: 200, categoria: "Muebles" },
-        { nombre: "Teclado", precio: 200, categoria: "Tecnología" },
-        { nombre: "Mause", precio: 200, categoria: "Tecnología" },
+        { nombre: "Mesa", precio: 250, categoria: "Muebles" },
+        { nombre: "Teclado", precio: 1200, categoria: "Tecnología" },
+        { nombre: "Mause", precio: 3200, categoria: "Tecnología" },
       ],
     };
   },
