@@ -1,6 +1,8 @@
 <template>
     <div>
-      <h1>Lista de Frutas</h1>
+      
+      <p>Lista de Frutas</p>
+      <p>Interacion entre los componentes padre e hijo</p>
       <!-- Enviar la lista al hijo y escuchar la selección -->
       <ComponenteHijo :listaPro="frutas" @seleccionar="manejarSeleccion" />
   
