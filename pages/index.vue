@@ -12,12 +12,25 @@
       label="Ingresa tu nombre"
       @blur="guardarNombreUsuario"
     ></v-text-field>
-
     <!-- Muestra el nombre del usuario -->
     <p v-if="nombreUsuarioGuardado">Hola, {{ nombreUsuarioGuardado }}!</p>
 
     <!-- Botón para borrar el nombre guardado -->
     <v-btn color="secondary" @click="borrarNombreUsuario">Borrar Nombre</v-btn>
+
+    <!-- Input para buscar un nombre -->
+    <v-text-field 
+      type="text" 
+      v-model="busqueda" 
+      label="Buscar..." 
+    ></v-text-field>
+
+    <!-- Lista de nombres filtrados -->
+    <ul>
+      <li v-for="nombre in nombresFiltrados" :key="nombre">
+        {{ nombre }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -32,6 +45,8 @@ export default {
     return {
       nombreUsuario: "", // Inicializa el nombre del usuario
       nombreUsuarioGuardado: localStorage.getItem('nombreUsuario') || "", // Recupera el nombre guardado en localStorage
+      nombres: ['Ana', 'Carlos', 'Luis', 'Eva', 'Sofia'], // Lista inicial
+      busqueda: '', // Texto que escribe el usuario
     };
   },
   methods: {
@@ -46,6 +61,14 @@ export default {
       this.nombreUsuarioGuardado = ""; // Limpia la vista
       this.nombreUsuario = ""; // Limpia el campo de texto
     }
-  }
+  },
+  computed: {
+    nombresFiltrados() {
+      // Filtrar nombres según la búsqueda
+      return this.nombres.filter((nombre) =>
+        nombre.toLowerCase().includes(this.busqueda.toLowerCase())
+      );
+    },
+  },
 };
 </script>
