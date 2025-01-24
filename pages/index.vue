@@ -1,85 +1,70 @@
 <template>
   <!-- Utilizar variables en inglés -->
-  <div>
+  <v-container>
     <v-row>
-      <v-card
-      elevation="13"outlined
-      class="pa-6 ma-2">
-          <ComponentePadre />
-      
+      <v-card elevation="13" outlined class="pa-6 ma-2">
+        <ComponentePadre />
       </v-card>
-      <v-card
-      elevation="13"outlined
-      class="pa-6 ma-2">
-      <v-card-title>LocalStorage</v-card-title>
-      <p>Guardar una variable y volverla a recuperar</p>
-        <!-- Formulario para ingresar el nombre -->
-        <v-text-field
-          v-model="nombreUsuario"
-          label="Ingresa tu nombre"
-          @blur="guardarNombreUsuario"
-        ></v-text-field>
-        <!-- Muestra el nombre del usuario -->
-        <p v-if="nombreUsuarioGuardado">Aqui la variable que se guardo: {{ nombreUsuarioGuardado }}!</p>
-    
-        <!-- Botón para borrar el nombre guardado -->
-        <v-btn color="secondary" @click="borrarNombreUsuario">
+      <v-card elevation="13" outlined class="pa-6 ma-2">
+        <v-card-title>LocalStorage</v-card-title>
+        <p>Guardar una variable y volverla a recuperar</p>
+        <!-- Formulario para ingresar el name -->
+        <v-text-field v-model="nameUser" label="Ingresa tu name" @blur="saveUsername"></v-text-field>
+        <!-- Muestra el name del usuario -->
+        <p v-if="SavedUserName
+        ">Aqui la variable que se guardo: {{ SavedUserName
+          }}!</p>
+
+        <!-- Botón para borrar el name guardado -->
+        <v-btn color="secondary" @click="deleteUser">
           <!-- Manejar el label según la variable -->
-          {{ nombreUsuarioGuardado ? "Borra" : "Guardar" }} nombre
+          {{ SavedUserName
+            ? "Borra" : "Guardar" }} name
         </v-btn>
       </v-card>
-      </v-row>
-      <v-row>
-        <v-card 
-        elevation="13"outlined
-        class="pa-6 ma-2">
+    </v-row>
+    <v-row>
+      <v-card elevation="13" outlined class="pa-6 ma-2">
         <v-card-title>Filter</v-card-title>
         <h4>Productos de Tecnología:</h4>
         <ul>
-          <li v-for="producto in productosTecnologia" :key="producto.nombre">
-            {{ producto.nombre }} - ${{ producto.precio }}
+          <li v-for="producto in productosTecnologia" :key="producto.name">
+            {{ producto.name }} - ${{ producto.precio }}
           </li>
         </ul>
-        </v-card>
-        <v-card
-        elevation="13"outlined
-        class="pa-6 ma-2">
+      </v-card>
+      <v-card elevation="13" outlined class="pa-6 ma-2">
         <v-card-title>Find</v-card-title>
-          <h4>Primer producto que cuesta más de $1000:</h4>
-          <p>{{ productoCaro.nombre }} - ${{ productoCaro.precio }}</p>
-        </v-card>
-        <v-card
-        elevation="13"outlined
-        class="pa-6 ma-2">
+        <h4>Primer producto que cuesta más de $1000:</h4>
+        <p>{{ productoCaro.name }} - ${{ productoCaro.precio }}</p>
+      </v-card>
+      <v-card elevation="13" outlined class="pa-6 ma-2">
         <v-card-title>map</v-card-title>
         <h4>Precios de productos de Tecnología:</h4>
         <ul>
           <li v-for="precio in preciosTecnologia" :key="precio">{{ precio }}</li>
         </ul>
       </v-card>
-      </v-row>
-      <v-row>
-        <v-card
-        elevation="13"outlined
-        class="pa-6 ma-2">
+    </v-row>
+    <v-row>
+      <v-card elevation="13" outlined class="pa-6 ma-2">
         <v-card-title>reduce</v-card-title>
         <h4>Total de productos de Tecnología:</h4>
         <p>${{ totalTecnologia }}</p>
       </v-card>
-      <v-card
-      elevation="13"outlined
-        class="pa-6 ma-2">
-                <v-card-title>slice</v-card-title>
+      <v-card elevation="13" outlined class="pa-6 ma-2">
+        <v-card-title>slice</v-card-title>
 
         <h4>Primeros 2 productos:</h4>
         <ul>
-          <li v-for="producto in primerosProductos" :key="producto.nombre">
-            {{ producto.nombre }} - ${{ producto.precio }}
+          <li v-for="producto in primerosProductos" :key="producto.name">
+            {{ producto.name }} - ${{ producto.precio }}
           </li>
         </ul>
       </v-card>
-      </v-row>
-  </div>
+    </v-row>
+  </v-container>
+
 </template>
 
 <script>
@@ -91,35 +76,38 @@ export default {
   },
   data() {
     return {
-      nombreUsuario: null, // Inicializa el nombre del usuario
-      nombres: ['Ana', 'Carlos', 'Luis', 'Eva', 'Sofia'], // Array de nombres
+      nameUser: null, // Inicializa el name del usuario
+      names: ['Ana', 'Carlos', 'Luis', 'Eva', 'Sofia'], // Array de names
       busqueda: '', // Valor de búsqueda ingresado por el usuario
       productos: [
-        { nombre: "Laptop", precio: 1500, categoria: "Tecnología" },
-        { nombre: "Celular", precio: 800, categoria: "Tecnología" },
-        { nombre: "Monitor", precio: 300, categoria: "Tecnología" },
-        { nombre: "Silla", precio: 100, categoria: "Muebles" },
-        { nombre: "Mesa", precio: 250, categoria: "Muebles" },
-        { nombre: "Teclado", precio: 1200, categoria: "Tecnología" },
-        { nombre: "Mause", precio: 3200, categoria: "Tecnología" },
+        { name: "Laptop", precio: 1500, categoria: "Tecnología" },
+        { name: "Celular", precio: 800, categoria: "Tecnología" },
+        { name: "Monitor", precio: 300, categoria: "Tecnología" },
+        { name: "Silla", precio: 100, categoria: "Muebles" },
+        { name: "Mesa", precio: 250, categoria: "Muebles" },
+        { name: "Teclado", precio: 1200, categoria: "Tecnología" },
+        { name: "Mause", precio: 3200, categoria: "Tecnología" },
       ],
     };
   },
   methods: {
-    guardarNombreUsuario() {
-      if (this.nombreUsuario) {
-        this.nombreUsuarioGuardado = this.nombreUsuario; // Actualiza el nombre en la vista
+    saveUsername() {
+      if (this.nameUser) {
+        this.SavedUserName
+          = this.nameUser; // Actualiza el name en la vista
       }
     },
-    borrarNombreUsuario() {
-      this.nombreUsuarioGuardado = null; // Limpia la vista
-      // localStorage.removeItem("nombreUsuario"); // Elimina el nombre de localStorage
-      // this.nombreUsuario = ""; // Limpia el campo de texto
+    deleteUser() {
+      this.SavedUserName
+        = null; // Limpia la vista
+      // localStorage.removeItem("nameUser"); // Elimina el name de localStorage
+      // this.nameUser = ""; // Limpia el campo de texto
     },
   },
   computed: {
-    // Retorna el nombre guardado desde el store
-    nombreUsuarioGuardado: {
+    // Retorna el name guardado desde el store
+    SavedUserName
+      : {
       get() {
         return this.$store.state.user;
       },
@@ -127,8 +115,8 @@ export default {
         this.$store.commit("setUser", value);
       },
     },
-    // Filtra los nombres según la búsqueda
-    
+    // Filtra los names según la búsqueda
+
     // Filtra los productos de tecnología
     //filter() crea un nuevo array con todos los elementos 
     // que pasen una prueba, la cual es definida por una función que retorna un valor booleano (true o false).

@@ -1,28 +1,27 @@
 export const state = () => ({
-    // Intentamos obtener los productos desde localStorage si existen, sino, usamos los valores predeterminados
-    productosTecnologia: JSON.parse(localStorage.getItem('productosTecnologia')) || [
-      { id: 1, nombre: 'Laptop', precio: 1500, categoria: 'Electrónica' },
-      { id: 2, nombre: 'Smartphone', precio: 800, categoria: 'Electrónica' },
-      { id: 3, nombre: 'Monitor', precio: 350, categoria: 'Electrónica' },
-      { id: 4, nombre: 'Teclado', precio: 120, categoria: 'Periféricos' },
+    // Try to get products from localStorage if they exist, otherwise, use default values
+    technologyProducts: JSON.parse(localStorage.getItem("technologyProducts")) || [
+      { id: 1, name: "Computadora", price: 1500, category: "Electrónica" },
+      { id: 2, name: "Smartphone", price: 800, category: "Electrónica" },
+      { id: 3, name: "Monitor", price: 350, category: "Electrónica" },
+      { id: 4, name: "Teclado", price: 120, category: "Periféricos" },
     ],
   });
   
   export const getters = {
-    retraive(state) {
-      return state.productosTecnologia;
+    retrieve(state) {
+      return state.technologyProducts;
     },
   };
   
   export const mutations = {
-    agregarProducto(state, nuevoProducto) {
-      // Asignamos un id único basado en la longitud actual del array
-      nuevoProducto.id = state.productosTecnologia.length + 1;
-      state.productosTecnologia.push(nuevoProducto);
+    addProduct(state, newProduct) {
+      // Assign a unique ID based on the current length of the array
+      newProduct.id = state.technologyProducts.length + 1;
+      state.technologyProducts.push(newProduct);
   
-      // Guardamos los productos en localStorage para persistencia
-      localStorage.setItem('productosTecnologia', JSON.stringify(state.productosTecnologia));
+      // Save the products in localStorage for persistence
+      localStorage.setItem("technologyProducts", JSON.stringify(state.technologyProducts));
     },
-  
   };
   

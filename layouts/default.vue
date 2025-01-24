@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- Menú dinámico -->
-    <v-navigation-drawer app>
+    <v-navigation-drawer app permanent>
       <v-list>
         <v-list-item
           v-for="item in menu"
