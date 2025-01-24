@@ -22,10 +22,6 @@ export const state = () => ({
   });
   
   export const mutations = {
-    // Mutación para actualizar el menú (agregar un nuevo ítem)
-    agregarAlMenu(state, nuevoElemento) {
-      state.menu.push(nuevoElemento);
-    },
   
     setSelectedMenu(state, path) {
       state.selectedMenu = path;
