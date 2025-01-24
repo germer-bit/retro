@@ -1,9 +1,10 @@
 <template>
-  <v-app>
+  <v-app >
     <!-- Menú dinámico -->
     <v-navigation-drawer app permanent>
       <v-list>
         <v-list-item
+        color="black"
           v-for="item in menu"
           :key="item._id"
           :to="item.path"
@@ -13,7 +14,7 @@
           <v-list-item-title>{{ item.label }}</v-list-item-title>
             <!-- Agregar el ícono -->
             <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon color="black">{{ item.icon }}</v-icon>
           </v-list-item-icon>
           
         </v-list-item>

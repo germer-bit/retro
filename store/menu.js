@@ -15,6 +15,7 @@ export const state = () => ({
       {
         _id: 3,
         label: 'Frutas',
+        icon: 'mdi-food-apple',
         path: '/dashboard/fruits',
       },
     ],

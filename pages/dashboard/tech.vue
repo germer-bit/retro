@@ -139,7 +139,7 @@
             category: this.newProduct.category,
           };
   
-          this.$store.commit("tech/agregarProducto", product);
+          this.$store.commit("tech/addProduct", product);
   
           this.newProduct = { name: "", price: null, category: "" };
           this.dialog = false;
